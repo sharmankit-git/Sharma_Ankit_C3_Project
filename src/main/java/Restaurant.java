@@ -61,4 +61,11 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+
+    public int getOrderTotal(List<Item> items) {
+        return items.stream()
+                .map(item -> item.getPrice())
+                .reduce(Integer::sum)
+                .orElse(0);
+    }
 }
